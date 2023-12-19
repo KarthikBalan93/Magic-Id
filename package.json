@@ -1,0 +1,28 @@
+{
+  "name": "magic-id",
+  "version": "1.0.0",
+  "description": "Azure SQL and React screen for Applicant List",
+  "main": "index.js",
+  "scripts": {
+    "start:client": "cd client && npm start",
+    "start:server": "cd server && npm start",
+    "start": "npm-run-all --parallel start:client start:server"
+  },
+  "workspaces": [
+    "client",
+    "server"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KarthikBalan93/Magic-Id.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KarthikBalan93/Magic-Id/issues"
+  },
+  "homepage": "https://github.com/KarthikBalan93/Magic-Id#readme",
+  "dependencies": {
+    "npm-run-all": "^4.1.5"
+  }
+}

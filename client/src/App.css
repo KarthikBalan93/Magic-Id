@@ -1,0 +1,248 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* styles.css */
+.app-container {
+  display: flex;
+}
+
+.sidebar {
+  width: 400px;
+  background-color: #333;
+  color: white;
+  padding: 20px;
+}
+
+.logo-container {
+  margin-bottom: 20px;
+}
+
+/* .sidebar-item {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.sidebar-item:hover {
+  background-color: #555;
+}
+
+.sidebar-item.active {
+  background-color: #555;
+  font-weight: bold;
+} */
+
+
+/* styles.css */
+.header {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  color: white;
+  border-bottom: 1px solid #ccc;
+  height: 50px;
+  padding: 30px;
+}
+
+.logo-container {
+  text-align: left;
+  margin-top: 10px;
+}
+
+.logo-container img {
+  width: 100px;
+}
+
+.profile-container {
+  display: flex;
+  align-items: center;
+}
+
+.profile-container img {
+  width: 30px;
+  /* Adjust the width of the profile icon */
+  border-radius: 50%;
+  margin-right: 10px;
+  /* Add margin between profile icon and name */
+}
+
+.profile-container span {
+  font-size: 16px;
+  font-weight: 500;
+  color: darkblue
+}
+
+/* App.css */
+.initials {
+  width: 30px;
+  height: 30px;
+  background-color: #fff;
+  color: #000;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 14px;
+  margin-right: 10px;
+  border: 1px solid;
+}
+
+.container-component {
+  display: flex;
+}
+
+.wrapper {
+  width: 100%;
+}
+
+.menu-container {
+  border-right: 1px solid #ccc;
+  height: 100vh;
+  padding: 10px;
+  color: darkblue;
+}
+
+.menu-item .icon{
+  margin-right: 10px;
+  font-size: 16px;
+}
+
+.menu-item .title{
+  padding-top: 3px
+}
+
+.menu-item {
+  height: 50px;
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  min-width: 200px;
+}
+
+
+/* styles.css */
+.menu {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.menu div {
+  /* padding-right: 10px; */
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.menu div:hover {
+  background-color: lightblue;
+}
+
+.menu .active {
+  background-color: lightblue;
+  font-weight: bold;
+}
+.active-menu-dot{
+  width: 10px;
+  height: 100%;
+}
+.active-menu-dot span{
+  display: block;
+  width: 5px;
+  height: 5px;
+  background: blue;
+  border-radius: 50%;
+  margin-top: 26px;
+}
+
+.active-dot {
+  margin-right: 20px;
+  width: 10px;
+}
+
+
+.bottom-menu {
+  position: absolute;
+  bottom: 0;
+}
+
+a {
+  text-decoration: none !important;
+}
+
+.menu a {
+  color: darkblue;
+}
+
+.wrapper-content{
+    margin: auto;
+    background: transparent;
+    width: 80%;
+}
+
+.content-temp{
+  margin-top: 30px;
+}
+
+.content-temp header>div{
+  display: flex;
+  font-size: 18px;
+  color: darkblue;
+}
+
+.back-btn{
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: #fff;
+  margin-right: 15px;
+}
+
+.page-title {
+  font-weight: bold;
+}
+
+.page-component{
+  text-align: left;
+  margin-top: 30px;
+  background: #fff;
+  border-radius: 5px;
+  padding: 20px
+}

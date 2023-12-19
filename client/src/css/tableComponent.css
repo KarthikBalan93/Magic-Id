@@ -1,0 +1,126 @@
+.table-container {
+    margin: 20px;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.responsive-table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid #eeeeee;
+}
+
+.responsive-table th {
+    background-color: #eeeeee;
+    color: grey;
+    font-weight: 100;
+    font-size: 14px;
+}
+
+.responsive-table th,
+.responsive-table td {
+    padding: 15px;
+}
+
+.responsive-table td {
+    border-bottom: 1px solid #eeeeee;
+}
+
+/* Add responsive styles for small screens */
+@media (max-width: 600px) {
+    .responsive-table {
+        overflow-x: scroll;
+    }
+
+    .responsive-table th,
+    .responsive-table td {
+        display: block;
+        width: 100%;
+        border: none;
+        text-align: left;
+    }
+
+    .responsive-table thead {
+        display: none;
+    }
+}
+
+@keyframes slideDown {
+    from {
+        max-height: 0;
+    }
+
+    to {
+        max-height: 1000px;
+    }
+}
+
+@keyframes slideUp {
+    from {
+        max-height: 1000px;
+    }
+
+    to {
+        max-height: 0;
+    }
+}
+
+.details-row {
+    max-height: 0;
+    overflow: hidden;
+    animation: slideUp 5s ease;
+    position: absolute;
+    z-index: 1;
+    background-color: #fff;
+    width: 63%;
+    box-shadow: 2px 4px 6px rgba(11, 103, 184, 0.1),
+        -2px -2px 6px rgba(11, 103, 184, 0.1),
+        2px -2px 6px rgba(11, 103, 184, 0.1),
+        -2px 4px 6px rgba(11, 103, 184, 0.1);
+    border: 1px solid #eee;
+    border-radius: 10px;
+}
+
+.details-row:last-child {
+    top: 57%
+}
+
+.details-row:nth-last-child(2) {
+    top: 51%;
+}
+
+.details-row.open {
+    max-height: 1000px;
+    overflow: hidden;
+    animation: slideDown 2s ease;
+}
+
+.details-content {
+    padding: 10px;
+}
+
+.details-item {
+    margin-bottom: 8px;
+}
+
+.details-label {
+    font-weight: bold;
+    display: inline-block;
+    width: 80px;
+}
+
+.details-value {
+    display: inline-block;
+    margin-left: 30px;
+}
+
+.highlight{
+    background-color: lightblue;
+}
+
+.no-data {
+    padding: 20px;
+    text-align: center;
+    font-weight: bold;
+    color: red;
+}
