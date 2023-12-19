@@ -13,7 +13,7 @@ export default function Input(props) {
                 </div>
             }
             <input className="input-field" {...props}/>
-            <div className="icon-container" style={{display: props.close ? 'block': 'none', cursor: 'pointer'}} onClick={() => props.clearSearch && props.clearSearch()}>
+            <div className="icon-container" style={{display: props.close === 'true' ? 'block': 'none', cursor: 'pointer'}} onClick={() => props.onReset && props.onReset()}>
                 <AiOutlineClose />
             </div>
         </div>

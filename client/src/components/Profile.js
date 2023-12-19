@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faAngleDown } from '@fortawesome/free-solid-svg-icons'
+import { FaChevronDown } from "react-icons/fa";
 
 const Profile = ({ name, profileIcon }) => {
     const [isDisplayInitial, setIsDisplayInitial] = useState(false);
@@ -26,7 +25,7 @@ const Profile = ({ name, profileIcon }) => {
             )}
             <span>{name}</span>
             <span className='pt-1 px-2'>
-                <FontAwesomeIcon icon={faAngleDown} />
+                <FaChevronDown />
             </span>
         </div>
     );

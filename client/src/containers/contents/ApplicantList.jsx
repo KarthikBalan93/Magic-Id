@@ -16,7 +16,7 @@ import api from '../../api';
 import { setLoader } from '../../redux/actions/ui/loaderAction';
 import { useDispatch } from 'react-redux';
 import { formatUTCDate } from '../../helpers/utils';
-
+import Pagination from '../../components/Pagination';
 
 export default function ApplicantList() {
     const dispatch = useDispatch();
@@ -24,22 +24,32 @@ export default function ApplicantList() {
     const [data, setData] = useState([]);
     const [closeSearch, setCloseSearch] = useState(false)
     const [searchTerm, setSearchTerm] = useState('');
-    
+    const [currentPage, setCurrentPage] = useState(1);
+    const [totalPages, setTotalPages] = useState(1);
+
     const [error, setError] = useState({ status: false, message: '' });
     const columns = ['Applicant Name', 'Verification Flow', 'Last Updated', 'Status'];
 
     const componentData = async (term = '') => {
         dispatch(setLoader(true))
         await api.get('/applicants', {
-            params: { search: term }
+            params: { search: term, page: currentPage, limit: 10 }
         }).then(res => {
-            console.log(res)
-            setData(res)
+            setData(res.data)
+            setTotalPages(res.totalPages)
         }).catch(err => {
             setError({ error: true, message: err.message })
         })
         dispatch(setLoader(false))
     }
+
+    const handlePageChange = (page) => {
+        setCurrentPage(page);
+    };
+
+    useEffect(() => {
+        componentData();
+    }, [currentPage])
     useEffect(() => {
         let isMount = true;
         if (isMount) componentData();
@@ -82,7 +92,7 @@ export default function ApplicantList() {
 
     const debouncedFetchSearchResults = debounce((term) => {
         fetchSearchResults(term);
-      }, 1000);
+    }, 1000);
 
     const columnComponent = (data, column) => {
         let componentData = data;
@@ -132,23 +142,32 @@ export default function ApplicantList() {
     }
 
     return (
-        <div className='applicant-list'>
-            <div className='filter-component'>
-                <span>Filter By</span>
-                <span style={{ width: '17%' }}>
-                    <Input icon={<CiSearch />} close={closeSearch} clearSearch={clearSearch} placeholder={'Search Name'} onChange={(e) => handleSearch(e.target.value)} value={searchTerm} />
-                </span>
-                <span>
-                    <Dropdown options={['Full Kyc', 'Core verification with watchlist']} icon={<GoWorkflow size={18} color='grey' />} name={'Workflow'} />
-                </span>
-                <span>
-                    <Dropdown options={['Full Kyc', 'Core verification with watchlist']} icon={<CiCalendar size={18} color='grey' />} name={'Last Updated'} />
-                </span>
-                <span>
-                    <Dropdown options={['Full Kyc', 'Core verification with watchlist']} icon={<TbProgressCheck size={18} color='grey' />} name={'Status'} />
-                </span>
+        <div className='applicant-list-container'>
+
+            <div className='applicant-list'>
+                <div className='filter-component'>
+                    <span>Filter By</span>
+                    <span style={{ width: '17%' }}>
+                        <Input icon={<CiSearch />} close={closeSearch ? 'true' : 'false'} onReset={clearSearch} placeholder={'Search Name'} onChange={(e) => handleSearch(e.target.value)} value={searchTerm} />
+                    </span>
+                    <span>
+                        <Dropdown options={['Full Kyc', 'Core verification with watchlist', 'Low Friction eKYC']} icon={<GoWorkflow size={18} color='grey' />} name={'Workflow'} />
+                    </span>
+                    <span>
+                        <Dropdown singleSelection={true} options={['Today', 'Yesterday', 'Last 7 Days', 'Last 15 Days', 'Last 30 Days']} icon={<CiCalendar size={18} color='grey' />} name={'Last Updated'} />
+                    </span>
+                    <span>
+                        <Dropdown options={['Approved', 'Declined', 'Needs Review', 'Awaiting Applicant']} icon={<TbProgressCheck size={18} color='grey' />} name={'Status'} />
+                    </span>
+                </div>
+                <Table data={data} columnOperation={columnComponent} addOnComponent={addAditionalComponent} columns={columns}></Table>
+
             </div>
-            <Table data={data} columnOperation={columnComponent} addOnComponent={addAditionalComponent} columns={columns}></Table>
+            <Pagination
+                currentPage={currentPage}
+                totalPages={totalPages}
+                onPageChange={handlePageChange}
+            />
         </div>
     )
 }

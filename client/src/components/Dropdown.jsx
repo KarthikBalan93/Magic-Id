@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { FaAngleDown } from 'react-icons/fa';
-import '../css/dropdownComponent.css'
+import '../css/dropdownComponent.css';
 
 export default function Dropdown(props) {
     const [isOpen, setIsOpen] = useState(false);
     const [selectedOptions, setSelectedOptions] = useState([]);
+    const dropdownRef = useRef(null);
 
     const toggleDropdown = () => {
         setIsOpen(!isOpen);
@@ -16,19 +17,32 @@ export default function Dropdown(props) {
         if (isSelected) {
             setSelectedOptions(selectedOptions.filter((selected) => selected !== option));
         } else {
-            setSelectedOptions([...selectedOptions, option]);
+            if (props.singleSelection) setSelectedOptions([option])
+            else setSelectedOptions([...selectedOptions, option]);
         }
 
         props.onSelect && props.onSelect(selectedOptions);
     };
 
+    const handleClickOutside = (event) => {
+        if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+            setIsOpen(false);
+        }
+    };
+
+    useEffect(() => {
+        document.addEventListener('click', handleClickOutside);
+
+        return () => {
+            document.removeEventListener('click', handleClickOutside);
+        };
+    }, []);
+
     return (
-        <div className="dropdown">
+        <div className="dropdown" ref={dropdownRef}>
             <button className="dropdown-button" onClick={toggleDropdown}>
                 <span className="button-content">
-                    {
-                        props.icon ? props.icon : <></>
-                    }
+                    {props.icon ? props.icon : <></>}
                     <span className="button-name">{props.name}</span>
                     <FaAngleDown color={'grey'} className={`icon ${isOpen ? 'open' : ''}`} />
                 </span>
@@ -48,5 +62,4 @@ export default function Dropdown(props) {
             )}
         </div>
     );
-
 }

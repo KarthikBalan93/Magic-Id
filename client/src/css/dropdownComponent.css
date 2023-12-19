@@ -59,11 +59,12 @@
   }
   
   .list-item.selected {
-    background-color: #007bff;
+    background-color: #007bff !important;
     color: #fff;
   }
   
   .list-item:hover {
     background-color: #ccc;
+    color: #fff;
   }
     

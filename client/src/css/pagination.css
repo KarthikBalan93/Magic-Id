@@ -1,0 +1,29 @@
+.pagination-container {
+    /* margin-top: 20px; */
+    text-align: center;
+  }
+  
+  .pagination-list {
+    list-style: none;
+    padding: 0;
+    display: inline-block;
+  }
+  
+  .pagination-list li {
+    display: inline-block;
+    margin: 0 5px;
+    cursor: pointer;
+    padding: 8px 12px;
+    border-radius: 4px;
+    background-color: #eee;
+    color: grey;
+    font-weight: 100;
+    font-size: 14px;
+    transition: background-color 0.3s;
+  }
+  
+  .pagination-list li.active {
+    background-color: darkblue;
+    color: white;
+  }
+  
