@@ -23,7 +23,7 @@ jobs:
 
       - name: Print environment variables
         run: |        
-          echo $TEST_KEY
+          echo ${{ secrets.TEST_KEY }}
 
       - name: npm install, build, and test
         run: |
