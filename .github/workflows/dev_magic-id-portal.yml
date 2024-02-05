@@ -23,7 +23,7 @@ jobs:
 
       - name: Print environment variables
         run: |        
-          echo "VITE_API_BASE_URL=$TEST_KEY"
+          echo $TEST_KEY
 
       - name: npm install, build, and test
         run: |
