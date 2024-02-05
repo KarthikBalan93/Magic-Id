@@ -21,6 +21,10 @@ jobs:
         with:
           node-version: '18.x'
 
+      - name: Print environment variables
+        run: |        
+          echo "VITE_API_BASE_URL=$TEST_KEY"
+
       - name: npm install, build, and test
         run: |
           npm install
